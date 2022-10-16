@@ -4,6 +4,7 @@ import StartGameScreen from "./screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import GameScreen from "./screens/GameScreen";
+import Colors from "./constants/colors";
 
 export default function App() {
   const [userNumber, setUsetNumber] = useState();
@@ -15,11 +16,14 @@ export default function App() {
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={userNumber} />;
   }
 
   return (
-    <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.rootScreen}>
+    <LinearGradient
+      colors={[Colors.primary700, Colors.acsent500]}
+      style={styles.rootScreen}
+    >
       <StatusBar style='light' />
       <ImageBackground
         source={require("./assets/images/dicesImage.jpg")}
